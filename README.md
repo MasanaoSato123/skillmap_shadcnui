@@ -65,3 +65,41 @@ npm run dev
 ```
 
 この結果は、Next.jsアプリケーションが正常に起動し、ローカルホストのポート3000でアクセス可能であることを示しています。
+
+## プロジェクトアーキテクチャ
+
+このプロジェクトは以下のようなアーキテクチャで構成されています：
+
+1. フロントエンド（Next.js）：
+   - `app/page.tsx`: メインページコンポーネント
+   - `components/EmployeeForm.tsx`: 従業員情報入力フォーム
+   - `components/SkillMap.tsx`: スキルマップ表示コンポーネント
+
+2. バックエンド（Next.js API Routes）：
+   - `app/api/employees/route.ts`: 従業員データのCRUD操作
+   - `app/api/categories/route.ts`: カテゴリ（業種、サービス、言語）データの取得
+   - `app/api/industries/route.ts`: 業種データの取得
+
+3. データベース（MySQL）：
+   - Prismaを使用してORMを実装
+   - `prisma/schema.prisma`: データベーススキーマ定義
+
+4. データモデル：
+   - Employee（従業員）
+   - Industry（業種）
+   - Service（サービス）
+   - Language（言語）
+
+5. ユーティリティ：
+   - `lib/prisma.ts`: Prismaクライアントのインスタンス管理
+   - `lib/utils.ts`: ユーティリティ関数
+
+6. スタイリング：
+   - Tailwind CSSを使用
+
+7. 設定ファイル：
+   - `next.config.js`: Next.js設定
+   - `tailwind.config.js`: Tailwind CSS設定
+   - `tsconfig.json`: TypeScript設定
+
+このアーキテクチャは、Next.jsのフルスタック機能を活用し、フロントエンドとバックエンドを統合しています。Prismaを使用してデータベース操作を簡素化し、Tailwind CSSでスタイリングを行っています。
